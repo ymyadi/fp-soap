@@ -27,10 +27,10 @@ class AbsenController extends Controller
 
     public function getDtRowDataAbsen(Request $request)
     {
-        $absen = Absen::select(['absen_id', 'pegawai_id', 'check_in', 'check_out', 'work_hours', 'created_at', 'updated_at']);
+        $absen = Absen::select(['absen_id', 'pegawai_id', 'check_in', 'check_out', 'work_hours', 'created_at', 'updated_at'])->orderBy('check_in', 'DESC')->orderBy('pegawai_id');
 
         return Datatables::of($absen)
-            ->editColumn('nama_pegawai', function($row) {
+            ->editColumn('pegawai_id', function($row) {
                 return $row->pegawai->nama;
             })
             ->editColumn('created_at', '{{ Carbon\Carbon::parse($created_at)->diffForHumans() }}')
@@ -46,7 +46,7 @@ class AbsenController extends Controller
 
     public function getDtRowDataAbsenLog(Request $request)
     {
-        $absenLogs = AbsenLog::select(['mesin_id', 'pin', 'date_time', 'ver', 'status_absen_id', 'created_at', 'updated_at']);
+        $absenLogs = AbsenLog::select(['mesin_id', 'pin', 'date_time', 'ver', 'status_absen_id', 'created_at', 'updated_at'])->orderBy('date_time', 'DESC')->orderBy('pin');
 
         return Datatables::of($absenLogs)
             ->editColumn('status_absen_id', function($row) {
