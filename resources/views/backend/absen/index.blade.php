@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @push('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
-<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('plugin/select2/4.0.3/css/select2.min.css') }}">
+<link href="{{ asset('plugin/datatables/1.10.12/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 @endpush
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('plugin/select2/4.0.3/js/select2.min.js') }}"></script>
+<script src="{{ asset('plugin/datatables/1.10.12/js/jquery.dataTables.min.js') }}"></script>
 @endpush
 @section('content')
 <script type="text/javascript">

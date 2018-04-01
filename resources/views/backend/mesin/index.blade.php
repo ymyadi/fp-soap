@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @push('css')
-<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="{{ asset('plugin/datatables/1.10.12/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 @endpush
 @push('scripts')
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('plugin/datatables/1.10.12/js/jquery.dataTables.min.js') }}"></script>
 @endpush
 @section('content')
 <script type="text/javascript">

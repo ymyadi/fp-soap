@@ -1,8 +1,8 @@
 @push('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+<link rel="stylesheet" href="{{ asset('plugin/select2/4.0.3/css/select2.min.css') }}">
 @endpush
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ asset('plugin/select2/4.0.3/js/select2.min.js') }}"></script>
 <script>
 $(document).ready(function () {
     $('.select2').select2({

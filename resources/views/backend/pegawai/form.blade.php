@@ -1,12 +1,12 @@
 @push('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="{{ asset('plugin/select2/4.0.3/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugin/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css') }}">
 @endpush
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ asset('plugin/select2/4.0.3/js/select2.min.js') }}"></script>
 <script src="{{ asset('plugin/input_mask/jquery.inputmask.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.id.min.js"></script>
+<script src="{{ asset('plugin/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('plugin/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.id.min.js') }}"></script>
 <script>
 $(document).ready(function () {
     $(":input").inputmask();
