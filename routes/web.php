@@ -22,11 +22,13 @@ Route::group(['middleware' => 'auth'], function() {
             'jabatan' => 'BackEnd\JabatanController',
             'pegawai' => 'BackEnd\PegawaiController',
             'mesin' => 'BackEnd\MesinController',
+            'mesin-user' => 'BackEnd\MesinUserController',
             'absen' => 'BackEnd\AbsenController'
     ]);
     Route::get('/absen/list/log', 'BackEnd\AbsenController@absenLog')->name('absen.log');
     Route::post('/get/datatables/jabatan', 'BackEnd\JabatanController@getDtRowData')->name('get.datatables.jabatan');
     Route::post('/get/datatables/mesin', 'BackEnd\MesinController@getDtRowData')->name('get.datatables.mesin');
+    Route::post('/get/datatables/mesin/user', 'BackEnd\MesinUserController@getDtRowData')->name('get.datatables.mesin.user');
     Route::post('/get/datatables/pegawai', 'BackEnd\PegawaiController@getDtRowData')->name('get.datatables.pegawai');
     Route::post('/get/datatables/absen/log', 'BackEnd\AbsenController@getDtRowDataAbsenLog')->name('get.datatables.absen.log');
     Route::post('/get/datatables/absen', 'BackEnd\AbsenController@getDtRowDataAbsen')->name('get.datatables.absen');

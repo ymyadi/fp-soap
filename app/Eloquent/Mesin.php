@@ -13,4 +13,13 @@ class Mesin extends Model
     protected $primaryKey = 'mesin_id';
     protected $fillable = ['nama', 'ip', 'is_default', 'port', 'password'];
     protected $dates = ['deleted_at'];
+
+    function scopeDropdown() {
+        $mesin = Mesin::all();
+        $data = array();
+        foreach ($mesin as $row):
+            $data[$row->mesin_id] = $row->nama;
+        endforeach;
+        return $data;
+    }
 }

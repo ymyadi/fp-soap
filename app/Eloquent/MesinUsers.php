@@ -11,8 +11,12 @@ class MesinUsers extends Model
     use SoftDeletes;
     protected $table = 'mesin_users';
     protected $primaryKey = 'mesin_user_id';
-    protected $fillable = ['nama', 'user_id'];
+    protected $fillable = ['mesin_id', 'nama', 'user_id'];
     protected $dates = ['deleted_at'];
+
+    public function mesin() {
+        return $this->belongsTo('App\Eloquent\Mesin', 'mesin_id');
+    }
 
     function scopeDropdown() {
         $mesinUsers = MesinUsers::all();

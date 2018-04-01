@@ -56,11 +56,14 @@
                     Master <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('jabatan.index') }}">
-                        Jabatan
-                    </a>
                     <a class="dropdown-item" href="{{ route('mesin.index') }}">
                         Mesin Fingerprint
+                    </a>
+                    <a class="dropdown-item" href="{{ route('mesin-user.index') }}">
+                        User Mesin 
+                    </a>
+                    <a class="dropdown-item" href="{{ route('jabatan.index') }}">
+                        Jabatan
                     </a>
                 </div>
             </li>
