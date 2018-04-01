@@ -132,11 +132,12 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
+        $mesinUsers = MesinUsers::dropdown();
         $jabatan = Jabatan::dropdown();
         $jenisKelamin = JenisKelamin::dropdown();
         $pegawaiStatus = PegawaiStatus::dropdown();
         $pegawai = Pegawai::find($id);
-        return view('backend.pegawai.edit', compact('pegawai', 'jabatan', 'jenisKelamin', 'pegawaiStatus'));
+        return view('backend.pegawai.edit', compact('pegawai', 'jabatan', 'jenisKelamin', 'pegawaiStatus', 'mesinUsers'));
     }
 
     /**
