@@ -17,8 +17,9 @@ class CreateMesinsTable extends Migration
             $table->increments('mesin_id');
             $table->string('nama');
             $table->string('ip');
-            $table->string('password');
-            $table->tinyInteger('is_default');
+            $table->string('password')->nullable();
+            $table->integer('port', 5)->default(80);
+            $table->tinyInteger('is_default')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

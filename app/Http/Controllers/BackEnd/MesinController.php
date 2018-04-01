@@ -23,7 +23,7 @@ class MesinController extends Controller
 
     public function getDtRowData(Request $request)
     {
-        $mesins = Mesin::select(['mesin_id', 'nama', 'ip', 'is_default', 'created_at', 'updated_at']);
+        $mesins = Mesin::select(['mesin_id', 'nama', 'ip', 'port', 'is_default', 'created_at', 'updated_at']);
 
         return Datatables::of($mesins)
             ->addColumn('action', function ($mesin) {

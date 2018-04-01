@@ -26,8 +26,9 @@ class AbsenLog extends Model
         if($mesin->count() > 0):
             $IP = $mesin->first()->ip;
             $Key = $mesin->first()->password;
+            $port = $mesin->first()->port;
             if($IP != "") {
-                $Connect = fsockopen($IP, "80", $errno, $errstr, 1);
+                $Connect = fsockopen($IP, $port, $errno, $errstr, 1);
                 if($Connect) {
                     $soapRequest = "<GetAttLog><ArgComKey xsi:type=\"xsd:integer\">" . $Key . "</ArgComKey><Arg><PIN xsi:type=\"xsd:integer\">All</PIN></Arg></GetAttLog>";
                     $newLine = "\r\n";

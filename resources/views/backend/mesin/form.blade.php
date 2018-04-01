@@ -27,12 +27,19 @@ $(document).ready(function () {
         <div class="invalid-feedback">
             IP Address harus diisi.
         </div>
-    </div>
-    <div class="col-md-6 mb-3">
+        <br>
         <label>Password</label>
         {!! Form::password('password', array('class' => 'form-control')) !!}
         <small class="text-muted">Di Perlukan untuk terhubung ke mesin Fingerprint</small>
         <div class="invalid-feedback"></div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label>Port *</label>
+        {!! Form::text('port', null, array('placeholder' => 'Wajib diisi.', 'class' => 'form-control', 'required' => 'required')) !!}
+        <small class="text-muted">Digunakan untuk dapat terhubung ke Mesin</small>
+        <div class="invalid-feedback">
+            Port harus diisi.
+        </div>
         <br>
         <label>Set Default *</label>
         {!! Form::select('is_default', array('0' => 'TIDAK', '1' => 'YA'), null, ['class' => 'form-control select2', 'required' => 'required']) !!}

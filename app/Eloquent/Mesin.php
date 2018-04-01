@@ -11,6 +11,6 @@ class Mesin extends Model
     use SoftDeletes;
     protected $table = 'mesin';
     protected $primaryKey = 'mesin_id';
-    protected $fillable = ['nama', 'ip', 'is_default', 'password'];
+    protected $fillable = ['nama', 'ip', 'is_default', 'port', 'password'];
     protected $dates = ['deleted_at'];
 }

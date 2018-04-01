@@ -24,6 +24,7 @@
                 {data: 'mesin_id', name: 'mesin_id'},
                 {data: 'nama', name: 'nama'},
                 {data: 'ip', name: 'ip'},
+                {data: 'port', name: 'port'},
                 {data: 'is_default', name: 'is_default'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'updated_at', name: 'updated_at'},
@@ -60,6 +61,7 @@
                                 <th class="text-center" style="width: 30px;">No</th>
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">IP</th>
+                                <th class="text-center">Port</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center" style="width: 90px;">Created At</th>
                                 <th class="text-center" style="width: 90px;">Updated At</th>
