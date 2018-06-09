@@ -21,6 +21,7 @@ class AbsenLog extends Model
     }
 
     public function syncData() {
+      try {
         $return = FALSE;
         $mesin = Mesin::where('is_default', 1);
         if($mesin->count() > 0):
@@ -67,7 +68,10 @@ class AbsenLog extends Model
                 }
             }
         endif;
-        return $return;
+      } catch (\Exception $e) {
+        $return = FALSE;
+      }
+      return $return;
     }
 
     public function getSummaryDataLogAbsensi($month, $year) {
