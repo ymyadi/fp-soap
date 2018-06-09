@@ -29,7 +29,7 @@ $(document).ready(function () {
         </div>
         <br>
         <label>Password</label>
-        {!! Form::password('password', array('class' => 'form-control')) !!}
+        {!! Form::text('password', null, array('class' => 'form-control')) !!}
         <small class="text-muted">Di Perlukan untuk terhubung ke mesin Fingerprint</small>
         <div class="invalid-feedback"></div>
     </div>
