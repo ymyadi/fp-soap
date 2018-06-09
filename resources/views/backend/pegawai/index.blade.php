@@ -50,6 +50,11 @@
                 {{ session('success') }}
             </div>
             @endif
+            @if (session('error'))
+            <div class="alert alert-danger">
+                {!! session('error') !!}
+            </div>
+            @endif
             <div class="card card-default">
                 <div class="card-header">
                     Pegawai
