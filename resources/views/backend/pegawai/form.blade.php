@@ -61,7 +61,7 @@ $(document).ready(function () {
     <div class="col-md-6 mb-3">
         <label>Email *</label>
         {!! Form::email('email', null, array('placeholder' => 'Wajib diisi.', 'class' => 'form-control', 'required' => 'required')) !!}
-        <small class="text-muted">Isi dengan No. KTP Pegawai</small>
+        <small class="text-muted">Isi dengan Email Pegawai</small>
         <div class="invalid-feedback">
             Email harus diisi.
         </div>
