@@ -1,0 +1,30 @@
+Requirement : https://laravel.com/docs/5.6/installation#server-requirements
+
+Step Installation :
+1. Buka cmd / git bash, pastikan berada pada path .../htdocs
+2. git clone https://github.com/ymyadi/fp-soap.git [name-folder]
+3. Buka notepad > run as administrator, buka file hosts pada path C:\Windows\System32\drivers\etc
+4. Baris baru lalu tambahkan `127.0.0.1	[name-virtual-domain]` lalu save
+5. Buka file httpd-vhosts.conf pada path .../xampp/apache/conf/extra
+	tambahkan code di bawah :
+	<VirtualHost *:80>
+		ServerAdmin [email-anda]
+		DocumentRoot "[path-folder-xampp]/[name-repo]/public"
+		ServerName [name-virtual-domain]
+		ErrorLog "[path-log-file]/[name-virtual-domain]-error.log"
+		CustomLog "[path-log-file]/[name-virtual-domain]-access.log" common
+	</VirtualHost>
+6. Pada git bash, terakhir kita berada pada folder htdocs, lalu masuk ke folder repo yang sudah kita buat / posisi apps dengan cara cd [name-folder]
+7. Ketikan composer install untuk download vendor-vendor yang di perlukan dari apps
+8. Buat file .env dengan cara ketikan perintah berikut pada cmd / git bash : cp .env.example .env
+9. Set file .env, buka pada notepad lalu sesuaikan (APP_URL = [name-virtual-domain], DB_DATABASE = [name-database], DB_USERNAME = [user-database], DB_PASSWORD = [pwd-user-database] *optional).
+10. Pada cmd / git bash ketikan perintah : 
+	- php artisan key:generate
+	- php artisan migrate
+	- php artisan db:seed => otomatis muncul informasi akun user untuk login ke system.
+11. Selesai
+
+Note :
+Step di atas saya asumsikan menggunakan :
+- XAMPP
+- OS Windows 10
