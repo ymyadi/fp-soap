@@ -82,35 +82,53 @@ class PegawaiController extends Controller
             'pegawai_status_id' => 'required',
             'tgl_berhenti' => ''
         ]);
-        $password = str_random(10);
-        $user = User::create([
-            'name' => $request->nama,
-            'email' => $request->email,
-            'password' => bcrypt($password)
-        ]);
-        $pegawai = new Pegawai();
-        $pegawai->nama = $request->nama;
-        $pegawai->no_ktp = str_replace('-', '', $request->no_ktp);
-        $pegawai->jabatan_id = $request->jabatan_id;
-        $pegawai->jenis_kelamin_id = $request->jenis_kelamin_id;
-        $pegawai->email = $request->email;
-        $pegawai->alamat = $request->alamat;
-        $pegawai->tgl_mulai_bekerja = $request->tgl_mulai_bekerja;
-        $pegawai->tgl_berhenti = (empty($request->tgl_berhenti) ? NULL : $request->tgl_berhenti);
-        $pegawai->pegawai_status_id = $request->pegawai_status_id;
-        $pegawai->user_id = $user->user_id;
-        $pegawai->save();
+        $complete = TRUE;
+        $messageError = array();
+        try {
+          $password = str_random(10);
+          $user = User::create([
+              'name' => $request->nama,
+              'email' => $request->email,
+              'password' => bcrypt($password)
+          ]);
+          $pegawai = new Pegawai();
+          $pegawai->mesin_user_id = $request->mesin_user_id;
+          $pegawai->nama = $request->nama;
+          $pegawai->no_ktp = str_replace('-', '', $request->no_ktp);
+          $pegawai->jabatan_id = $request->jabatan_id;
+          $pegawai->jenis_kelamin_id = $request->jenis_kelamin_id;
+          $pegawai->email = $request->email;
+          $pegawai->alamat = $request->alamat;
+          $pegawai->tgl_mulai_bekerja = $request->tgl_mulai_bekerja;
+          $pegawai->tgl_berhenti = (empty($request->tgl_berhenti) ? NULL : $request->tgl_berhenti);
+          $pegawai->pegawai_status_id = $request->pegawai_status_id;
+          $pegawai->user_id = $user->user_id;
+          $pegawai->save();
 
-        #send account from email
-        $contentMail = [
-            'name' => $request->nama,
-            'username' => $request->email,
-            'password' => $password,
-            'type_mail' => 'pegawai_baru',
-            'to' => $request->email
-        ];
-        ProcessSendMail::dispatch($contentMail)->delay(now()->addMinutes(1));
-        return redirect()->route('pegawai.index')->with('success', 'Pegawai created successfully');
+          #send account from email
+          $contentMail = [
+              'name' => $request->nama,
+              'username' => $request->email,
+              'password' => $password,
+              'type_mail' => 'pegawai_baru',
+              'to' => $request->email
+          ];
+        } catch (\Exception $e) {
+          $messageError[] = $e->getMessage();
+          $complete = FALSE;
+        }
+        try {
+          ProcessSendMail::dispatch($contentMail)->delay(now()->addMinutes(1));
+        } catch (\Exception $e) {
+          $messageError[] = 'Problem Send Email. Please Check Configuration Mail.';
+        }
+        if(count($messageError) > 0) {
+          $request->session()->flash('error', implode('. ', $messageError));
+        }
+        if($complete) {
+          $request->session()->flash('success', 'Data sudah ter-update.');
+        }
+        return redirect()->route('pegawai.index');
     }
 
     /**
